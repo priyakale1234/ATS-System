@@ -39,10 +39,10 @@ Job Description:
 
     raw_output = response.choices[0].message.content
 
-    # ✅ SAFE JSON PARSING
+  
     data = safe_json_loads(raw_output)
 
-    # ✅ HARD FALLBACK (VERY IMPORTANT)
+   
     if not data:
         data = {
             "ats_score": 0,
@@ -51,7 +51,7 @@ Job Description:
             "improvements": ["Unable to parse AI response"]
         }
 
-    # ✅ NORMALIZE SCORE
+  
     score = normalize_score(data.get("ats_score", 0))
     data["ats_score"] = score
     data["verdict"] = verdict_from_score(score)

@@ -72,28 +72,22 @@ def admin_view():
                 """
             )
 
-            # ==============================
-            # DETAILED ANALYSIS
-            # ==============================
+           
             with st.expander("🔍 View Detailed ATS Analysis"):
                 analysis = ats_score(resume_texts[name], jd)
                 st.json(analysis)
 
-            # ==============================
-            # PDF REPORT DOWNLOAD
-            # ==============================
+           
          
             report_path = f"data/reports/{name}_ATS_Report.pdf"
 
             if st.button(
                 f"📥 Download Report ({name})",
-                key=f"download_{idx}"   # ✅ UNIQUE KEY
+                key=f"download_{idx}"   
             ):
-                generate_pdf(analysis, report_path)   # ✅ FIXED FUNCTION
+                generate_pdf(analysis, report_path)
                 st.success(f"Report saved to {report_path}")
 
-    # ==============================
-    # ADMIN FOOTER
-    # ==============================
+  
     st.markdown("---")
     st.caption("🔐 Admin actions are logged | AI ATS System")
